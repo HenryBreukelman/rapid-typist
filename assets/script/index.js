@@ -16,3 +16,11 @@ let words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
 'homework', 'fantastic', 'economy', 'interview', 'awesome', 'challenge', 'science', 
 'mystery', 'famous', 'league', 'memory', 'leather', 'planet', 'software', 'update', 
 'yellow', 'keyboard', 'window'];
+
+/*
+  functions
+*/
+
+/*
+  eventlisteners
+*/
