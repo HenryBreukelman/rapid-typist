@@ -1,7 +1,7 @@
 'use strict';
 
 import * as utils from './utils.js';
-import Score from './Score.js';
+import {Score} from './Score.js';
 
 let words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building', 
 'population', 'weather', 'bottle', 'history', 'dream', 'character', 'money', 
@@ -33,6 +33,9 @@ const userInput = utils.select('.user-input');
 let gameRunning = false;
 let setTime;
 
+const gameMusic = new Audio('./assets/media/music.mp3')
+gameMusic.type = "audio/mp3"
+
 /*
   functions
 */
@@ -52,18 +55,19 @@ function startGame () {
   gameRunning = true;
   start.classList.add('hidden');
   reset.classList.remove('hidden');
-
+  gameMusic.play()
   startTimer();
 }
 
 function startTimer() {
-  let startTime = 10;
+  let startTime = 9;
   let timeLeft = startTime;
   setTime = setInterval(function() {
     timer.innerHTML = timeLeft;
     if (timeLeft <= 0) {
       clearInterval(setTime);
       gameRunning = false;
+      stopMusic()
     }
     timeLeft--;
   }, 1000);
@@ -73,8 +77,14 @@ function resetGame() {
   gameRunning = false;
   start.classList.remove('hidden');
   reset.classList.add('hidden');
+  stopMusic()
   clearInterval(setTime); 
   timer.innerHTML = 99;
+}
+
+function stopMusic () {
+  gameMusic.pause()
+  gameMusic.currentTime = 0
 }
 
 /*
@@ -84,5 +94,3 @@ function resetGame() {
 utils.listen('load', window, setDate);
 utils.listen('click', start, startGame);
 utils.listen('click', reset, resetGame);
-
-
