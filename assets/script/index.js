@@ -33,10 +33,13 @@ const userInput = Utils.select('.user-input');
   functions
 */
 
-
+function detDate () {
+  
+}
 
 /*
   eventlisteners
 */
 
+Utils.listen('click', user, userInfoOpen);
 Utils.listen('click', user, userInfoOpen);
