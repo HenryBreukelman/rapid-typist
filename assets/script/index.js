@@ -1,6 +1,7 @@
 'use strict';
 
 import * as utils from './utils.js';
+import Score from './Score.js';
 
 let words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building', 
 'population', 'weather', 'bottle', 'history', 'dream', 'character', 'money', 
@@ -21,25 +22,67 @@ let words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
   selectors
 */
 
-const date = Utils.select('.date');
-const start = Utils.select('.start-button');
-const reset = Utils.select('.reset-button');
-const timer = Utils.select('.timer');
-const word = Utils.select('.word');
-const score = Utils.select('.score');
-const userInput = Utils.select('.user-input');
+const date = utils.select('.date');
+const start = utils.select('.start-button');
+const reset = utils.select('.reset-button');
+const timer = utils.select('.timer');
+const word = utils.select('.word');
+const score = utils.select('.score');
+const userInput = utils.select('.user-input');
+
+let gameRunning = false;
+let setTime;
 
 /*
   functions
 */
 
-function detDate () {
-  
+function setDate () {
+  const options = {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit'
+  };
+
+  let currentDate = new Date().toLocaleDateString('en-CA', options);
+  date.innerHTML = currentDate;
+}
+
+function startGame () {
+  gameRunning = true;
+  start.classList.add('hidden');
+  reset.classList.remove('hidden');
+
+  startTimer();
+}
+
+function startTimer() {
+  let startTime = 10;
+  let timeLeft = startTime;
+  setTime = setInterval(function() {
+    timer.innerHTML = timeLeft;
+    if (timeLeft <= 0) {
+      clearInterval(setTime);
+      gameRunning = false;
+    }
+    timeLeft--;
+  }, 1000);
+}
+
+function resetGame() {
+  gameRunning = false;
+  start.classList.remove('hidden');
+  reset.classList.add('hidden');
+  clearInterval(setTime); 
+  timer.innerHTML = 99;
 }
 
 /*
   eventlisteners
 */
 
-Utils.listen('click', user, userInfoOpen);
-Utils.listen('click', user, userInfoOpen);
+utils.listen('load', window, setDate);
+utils.listen('click', start, startGame);
+utils.listen('click', reset, resetGame);
+
+

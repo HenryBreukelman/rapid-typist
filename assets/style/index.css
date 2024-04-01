@@ -53,6 +53,7 @@ header {
 
 .date {
   line-height: 60px;
+  font-size: 20px
 }
 
 h1 {
@@ -96,6 +97,11 @@ input {
 input[type=button] {
   width: 100px;
   font-size: 20px;
+  transition: all 0.25s ease-in-out;
+}
+
+input[type=button]:hover, .user-input:hover {
+  background-color: rgba(40 4 70 / 0.8);
 }
 
 .start-button {
@@ -137,4 +143,5 @@ i {
   margin-top: 20px;
   width: 300px;
   height: 60px;
+  transition: all 0.25s ease-in-out;
 }
