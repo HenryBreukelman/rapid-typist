@@ -60,7 +60,7 @@ function startGame () {
 }
 
 function startTimer() {
-  let startTime = 9;
+  let startTime = 99;
   let timeLeft = startTime;
   setTime = setInterval(function() {
     timer.innerHTML = timeLeft;
@@ -73,13 +73,26 @@ function startTimer() {
   }, 1000);
 }
 
+function checkWord() {
+  let input = userInput.value.trim();
+  let currentWord = word.innerHTML;
+  if (gameRunning && currentWord === input) {
+    newWord();
+  }
+}
+
+function newWord() {
+  console.log(5)
+}
+
 function resetGame() {
   gameRunning = false;
   start.classList.remove('hidden');
   reset.classList.add('hidden');
-  stopMusic()
   clearInterval(setTime); 
   timer.innerHTML = 99;
+
+  stopMusic()
 }
 
 function stopMusic () {
@@ -94,3 +107,5 @@ function stopMusic () {
 utils.listen('load', window, setDate);
 utils.listen('click', start, startGame);
 utils.listen('click', reset, resetGame);
+utils.listen('input', userInput, checkWord);
+
