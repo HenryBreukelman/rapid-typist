@@ -1,6 +1,6 @@
 'use strict';
 
-import * as Utils from './utils.js';
+import * as utils from './utils.js';
 
 let words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building', 
 'population', 'weather', 'bottle', 'history', 'dream', 'character', 'money', 
@@ -18,9 +18,25 @@ let words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
 'yellow', 'keyboard', 'window'];
 
 /*
+  selectors
+*/
+
+const date = Utils.select('.date');
+const start = Utils.select('.start-button');
+const reset = Utils.select('.reset-button');
+const timer = Utils.select('.timer');
+const word = Utils.select('.word');
+const score = Utils.select('.score');
+const userInput = Utils.select('.user-input');
+
+/*
   functions
 */
+
+
 
 /*
   eventlisteners
 */
+
+Utils.listen('click', user, userInfoOpen);

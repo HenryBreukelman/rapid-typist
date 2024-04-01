@@ -51,6 +51,10 @@ header {
   width: 200px;
 }
 
+.date {
+  line-height: 60px;
+}
+
 h1 {
   font-size: 30px;
   line-height: 60px;
@@ -64,6 +68,7 @@ form {
   border: 1px solid #9afffd;
   border-radius: 20px;
   position: relative;
+  backdrop-filter: blur(4px);
 }
 
 h1, h2, p, input, i {
@@ -72,11 +77,11 @@ h1, h2, p, input, i {
 }
 
 form > p {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 input {
-  background-color: rgba(40 4 70 / 0.5);
+  background-color: rgba(40 4 70 / 0.3);
   border-radius: 50px;
   padding: 8px;
   border: 1px solid #9afffd;
@@ -93,8 +98,18 @@ input[type=button] {
   font-size: 20px;
 }
 
+.start-button {
+  border-color: #00ff00;
+  color: #00ff00;
+}
+
+.reset-button {
+  border-color: #ff0000;
+  color: #ff0000;
+}
+
 .timer-div {
-  margin-top: 45px;
+  margin-top: 50px;
   font-size: 40px;
 }
 
@@ -116,8 +131,9 @@ i {
 }
 
 .user-input {
+  cursor: pointer;
   font-size: 30px;
-  margin-top: 10px;
+  margin-top: 20px;
   width: 300px;
   height: 60px;
 }
