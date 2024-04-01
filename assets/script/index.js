@@ -32,6 +32,7 @@ const userInput = utils.select('.user-input');
 
 let gameRunning = false;
 let setTime;
+let gameScore = 0
 
 const gameMusic = new Audio('./assets/media/music.mp3')
 gameMusic.type = "audio/mp3"
@@ -48,13 +49,15 @@ function setDate () {
   };
 
   let currentDate = new Date().toLocaleDateString('en-CA', options);
-  date.innerHTML = currentDate;
+  date.innerText = currentDate;
 }
 
 function startGame () {
   gameRunning = true;
   start.classList.add('hidden');
   reset.classList.remove('hidden');
+  userInput.disabled = false;
+  userInput.focus();
   gameMusic.play()
   startTimer();
 }
@@ -63,7 +66,7 @@ function startTimer() {
   let startTime = 99;
   let timeLeft = startTime;
   setTime = setInterval(function() {
-    timer.innerHTML = timeLeft;
+    timer.innerText = timeLeft;
     if (timeLeft <= 0) {
       clearInterval(setTime);
       gameRunning = false;
@@ -75,8 +78,11 @@ function startTimer() {
 
 function checkWord() {
   let input = userInput.value.trim();
-  let currentWord = word.innerHTML;
+  let currentWord = word.innerText;
   if (gameRunning && currentWord === input) {
+    userInput.value = '';
+    gameScore++
+    score.innerText = gameScore
     newWord();
   }
 }
@@ -90,7 +96,8 @@ function resetGame() {
   start.classList.remove('hidden');
   reset.classList.add('hidden');
   clearInterval(setTime); 
-  timer.innerHTML = 99;
+  timer.innerText = 99;
+  gameScore = 0;
 
   stopMusic()
 }
