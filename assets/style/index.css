@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: min(100% - 30px, 1080px);
+  margin-inline: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.spacebetween {
+  justify-content: space-between;
+}
+
+.center {
+  display: grid;
+  place-items: center;
+}
+
+body {
+  font-family: 'Nunito', sans-serif, Arial, sans-serif;
+}
+
+/*
+  Content
+*/
+
+
