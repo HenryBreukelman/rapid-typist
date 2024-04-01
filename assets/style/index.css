@@ -26,10 +26,17 @@
 
 body {
   font-family: 'Nunito', sans-serif, Arial, sans-serif;
+  background: #000 url(../media/background.jpg) top / cover no-repeat;
+}
+
+.hidden {
+  display: none;
 }
 
 /*
   Content
 */
 
-
+h1, h2, p, input {
+  color: #fff;
+}
