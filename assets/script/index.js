@@ -38,6 +38,8 @@ let gameScore = 0
 const gameMusic = new Audio('./assets/media/music.mp3')
 gameMusic.type = "audio/mp3"
 
+const correct = new Audio('./assets/media/correct.mp3')
+correct.type = "audio/mp3"
 /*
   functions
 */
@@ -94,8 +96,9 @@ function checkWord() {
   let currentWord = word.innerText;
   if (gameRunning && currentWord === input) {
     userInput.value = '';
-    gameScore++
-    score.innerText = gameScore
+    gameScore++;
+    score.innerText = gameScore;
+    correct.play();
     newWord();
   }
 }
