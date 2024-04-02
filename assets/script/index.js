@@ -88,7 +88,7 @@ function shufflelist() {
 function checkWord() {
   let input = userInput.value.trim();
   let currentWord = word.innerText;
-  if (gameRunning && currentWord === input) {
+  if (gameRunning && currentWord.toLowerCase() === input.toLowerCase()) {
     userInput.value = '';
     gameScore++;
     score.innerText = gameScore;
