@@ -109,7 +109,7 @@ function resetGame() {
   timer.innerText = '99';
   userInput.disabled = true;
   userInput.value = '';
-  word.innerText = 'Click Start'
+  word.innerText = ''
   gameScore = 0;
   stopMusic()
 }
