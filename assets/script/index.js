@@ -32,6 +32,7 @@ const userInput = utils.select('.user-input');
 
 let gameRunning = false;
 let setTime;
+let newList;
 let gameScore = 0
 
 const gameMusic = new Audio('./assets/media/music.mp3')
@@ -59,7 +60,9 @@ function startGame () {
   userInput.disabled = false;
   userInput.focus();
   gameMusic.play()
+  shufflelist();
   startTimer();
+  newWord();
 }
 
 function startTimer() {
@@ -69,12 +72,22 @@ function startTimer() {
     timer.innerText = timeLeft;
     if (timeLeft <= 0) {
       clearInterval(setTime);
+      start.classList.remove('hidden');
+      reset.classList.add('hidden');
+      userInput.disabled = true;
+      userInput.value = '';
+      word.innerText = 'Click Start'
       gameRunning = false;
       stopMusic()
     }
     timeLeft--;
   }, 1000);
 }
+
+function shufflelist() {
+  newList = words.sort((a, b) => 0.5 - Math.random());
+}
+
 
 function checkWord() {
   let input = userInput.value.trim();
@@ -88,7 +101,7 @@ function checkWord() {
 }
 
 function newWord() {
-  console.log(5)
+  word.innerText = newList.shift();
 }
 
 function resetGame() {
@@ -96,9 +109,11 @@ function resetGame() {
   start.classList.remove('hidden');
   reset.classList.add('hidden');
   clearInterval(setTime); 
-  timer.innerText = 99;
+  timer.innerText = '99';
+  userInput.disabled = true;
+  userInput.value = '';
+  word.innerText = 'Click Start'
   gameScore = 0;
-
   stopMusic()
 }
 
