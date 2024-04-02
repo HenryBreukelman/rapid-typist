@@ -62,6 +62,7 @@ function startGame () {
   userInput.disabled = false;
   userInput.focus();
   gameMusic.play()
+  score.innerText = 0;
   shufflelist();
   startTimer();
   newWord();
@@ -73,14 +74,7 @@ function startTimer() {
   setTime = setInterval(function() {
     timer.innerText = timeLeft;
     if (timeLeft <= 0) {
-      clearInterval(setTime);
-      start.classList.remove('hidden');
-      reset.classList.add('hidden');
-      userInput.disabled = true;
-      userInput.value = '';
-      word.innerText = 'Click Start'
-      gameRunning = false;
-      stopMusic()
+      resetGame();
     }
     timeLeft--;
   }, 1000);
