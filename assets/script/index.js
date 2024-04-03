@@ -33,13 +33,15 @@ const userInput = utils.select('.user-input');
 let gameRunning = false;
 let setTime;
 let newList;
-let gameScore = 0
+let gameScore = 0;
 
-const gameMusic = new Audio('./assets/media/music.mp3')
-gameMusic.type = "audio/mp3"
+const gameMusic = new Audio('./assets/media/music.mp3');
+gameMusic.type = "audio/mp3";
+gameMusic.volume = 0.7;
 
-const correct = new Audio('./assets/media/correct.mp3')
-correct.type = "audio/mp3"
+const correct = new Audio('./assets/media/correct.mp3');
+correct.type = "audio/mp3";
+
 /*
   functions
 */
@@ -102,8 +104,8 @@ function newWord() {
 }
 
 function restartGame() {
-  resetGame()
-  startGame()
+  resetGame();
+  startGame();
 }
 
 function resetGame() {
@@ -116,12 +118,12 @@ function resetGame() {
   userInput.value = '';
   word.innerText = ''
   gameScore = 0;
-  stopMusic()
+  stopMusic();
 }
 
 function stopMusic () {
-  gameMusic.pause()
-  gameMusic.currentTime = 0
+  gameMusic.pause();
+  gameMusic.currentTime = 0;
 }
 
 /*

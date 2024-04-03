@@ -48,7 +48,8 @@ header {
 }
 
 .header {
-  width: 200px;
+  width: 20%;
+  overflow: hidden;
 }
 
 .date {
@@ -128,7 +129,8 @@ i {
   border-radius: 10px;
   font-size: 48px;
   font-weight: 600;
-  width: 400px;
+  width: 70svw;
+  max-width: 400px;
   height: 80px;
   user-select: none;
 }
@@ -141,7 +143,8 @@ i {
   cursor: pointer;
   font-size: 30px;
   margin-top: 20px;
-  width: 300px;
+  width: 70svw;
+  max-width: 300px;
   height: 60px;
   transition: all 0.25s ease-in-out;
   
