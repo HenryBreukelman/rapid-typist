@@ -101,6 +101,11 @@ function newWord() {
   word.innerText = newList.shift();
 }
 
+function restartGame() {
+  resetGame()
+  startGame()
+}
+
 function resetGame() {
   gameRunning = false;
   start.classList.remove('hidden');
@@ -125,6 +130,6 @@ function stopMusic () {
 
 utils.listen('load', window, setDate);
 utils.listen('click', start, startGame);
-utils.listen('click', reset, resetGame);
+utils.listen('click', reset, restartGame);
 utils.listen('input', userInput, checkWord);
 
