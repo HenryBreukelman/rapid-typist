@@ -131,7 +131,7 @@ input[type=button]:hover, .user-input:hover {
   font-size: 40px;
 }
 
-i {
+.timer-div i {
   margin: 0 10px;
 }
 
@@ -163,19 +163,35 @@ i {
 
 /* scores */
 
-.high-score-box i {
-  cursor: pointer;
-}
-
 .high-score-box {
   z-index: 9;
   position: absolute;
   right: 0;
-  width: 300px;
+  padding: 20px;
+  width: 250px;
   height: 100%;
   border-top-left-radius: 20px;
   border-top: 1px solid #9afffd;
   border-left: 1px solid #9afffd;
   background-color: rgba(40 4 70 / 0.3);
   backdrop-filter: blur(4px);
+  transition: all 0.25s ease-in-out;
+  animation: openAnimation 0.25s ease-in-out forwards;
+}
+
+@keyframes openAnimation {
+  from {
+      opacity: 0;
+  } to {
+      opacity: 1;
+  }
+}
+
+.high-score-box i {
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.high-score {
+  margin-top: 5px;
 }
