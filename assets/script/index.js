@@ -31,6 +31,8 @@ const score = utils.select('.score');
 const userInput = utils.select('.user-input');
 const highScores = utils.select('.score-button')
 const highScoresBox = utils.select('.high-score-box');
+const close = utils.select('.close');
+const game = utils.select('.game');
 
 let gameRunning = false;
 let setTime;
@@ -72,7 +74,7 @@ function startGame () {
   shufflelist();
   startTimer();
   newWord();
-  closeScorse();
+  closeScores();
 }
 
 function startTimer() {
@@ -134,14 +136,10 @@ function stopMusic () {
 
 function openScores() {
   highScoresBox.classList.remove('hidden');
-  console.log(3)
 }
 
 function closeScores(event) {
-  if (!highScoresBox.contains(event.target)) {
-    highScoresBox.classList.add('hidden');
-    console.log(4);
-  }
+  highScoresBox.classList.add('hidden');
 }
 /*
   eventlisteners
@@ -152,4 +150,6 @@ utils.listen('click', start, startGame);
 utils.listen('click', reset, restartGame);
 utils.listen('input', userInput, checkWord);
 utils.listen('click', highScores, openScores);
-utils.listen('click', '.high-score-box', closeScores);
+utils.listen('click', close, closeScores);
+utils.listen('click', game, closeScores);
+

@@ -163,6 +163,10 @@ i {
 
 /* scores */
 
+.high-score-box i {
+  cursor: pointer;
+}
+
 .high-score-box {
   z-index: 9;
   position: absolute;
