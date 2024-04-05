@@ -33,11 +33,13 @@ const highScores = utils.select('.score-button')
 const highScoresBox = utils.select('.high-score-box');
 const close = utils.select('.close');
 const game = utils.select('.game');
+const scores = utils.select('.scores');
 
 let gameRunning = false;
 let setTime;
 let newList;
 let gameScore = 0;
+let scoresList;
 
 const gameMusic = new Audio('./assets/media/music.mp3');
 gameMusic.type = "audio/mp3";
@@ -50,7 +52,7 @@ correct.type = "audio/mp3";
   functions
 */
 
-function setDate () {
+function getDate() {
   const options = {
     year: 'numeric',
     month: 'short',
@@ -58,6 +60,11 @@ function setDate () {
   };
 
   let currentDate = new Date().toLocaleDateString('en-CA', options);
+  return currentDate
+}
+
+function setDate() {
+  let currentDate = getDate()
   date.innerText = currentDate;
 }
 
@@ -78,7 +85,7 @@ function startGame () {
 }
 
 function startTimer() {
-  let startTime = 19;
+  let startTime = 10;
   let timeLeft = startTime;
   setTime = setInterval(function() {
     timer.innerText = timeLeft;
@@ -123,6 +130,7 @@ function resetGame() {
   userInput.disabled = true;
   userInput.value = '';
   word.innerText = ''
+  setHighScores();
   gameScore = 0;
   stopMusic();
 }
@@ -138,9 +146,33 @@ function openScores() {
   highScoresBox.classList.remove('hidden');
 }
 
-function closeScores(event) {
+function closeScores() {
   highScoresBox.classList.add('hidden');
 }
+
+function setHighScores() {
+  let newGameScore = getScore()
+  let scoresList = JSON.parse(localStorage.getItem('highScores'))|| []
+  console.log(scoresList, 1)
+  scoresList.push(newGameScore);
+  console.log(scoresList, 2)
+  scoresList.sort((a, b) => b.score - a.score).splice(0, 10);
+  localStorage.setItem('highScores', JSON.stringify(scoresList));
+  console.log(localStorage, 3)
+} 
+
+function getScore() {
+  let gamePercent = ((gameScore / words.length) * 100).toFixed(1);
+  let scoreDate = getDate();
+  const newScore = {
+    score: gameScore,
+    perc: gamePercent,
+    date: scoreDate
+  }
+  console.log(newScore, 4)
+  return newScore
+}
+
 /*
   eventlisteners
 */

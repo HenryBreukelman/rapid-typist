@@ -168,7 +168,7 @@ input[type=button]:hover, .user-input:hover {
   position: absolute;
   right: 0;
   padding: 20px;
-  width: 250px;
+  width: 320px;
   height: 100%;
   border-top-left-radius: 20px;
   border-top: 1px solid #9afffd;
@@ -194,4 +194,24 @@ input[type=button]:hover, .user-input:hover {
 
 .high-score {
   margin-top: 5px;
+}
+
+.high-score p {
+  text-align: left;
+}
+
+.place {
+  width: 13%;
+}
+
+.number {
+  width: 30%;
+}
+
+.percent {
+  width: 15%;
+}
+
+.when {
+  width: 35%;
 }
