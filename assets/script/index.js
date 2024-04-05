@@ -39,6 +39,7 @@ let setTime;
 let newList;
 let gameScore = 0;
 let scoresList = [];
+let gameTime = 10
 
 const gameMusic = new Audio('./assets/media/music.mp3');
 gameMusic.type = "audio/mp3";
@@ -84,7 +85,7 @@ function startGame () {
 }
 
 function startTimer() {
-  let startTime = 10;
+  let startTime = gameTime;
   let timeLeft = startTime;
   setTime = setInterval(function() {
     timer.innerText = timeLeft;
@@ -125,7 +126,7 @@ function resetGame() {
   start.classList.remove('hidden');
   reset.classList.add('hidden');
   clearInterval(setTime); 
-  timer.innerText = '99';
+  timer.innerText = gameTime;
   userInput.disabled = true;
   userInput.value = '';
   word.innerText = ''
@@ -153,7 +154,7 @@ function setHighScores() {
   let newGameScore = getScore()
   let scoresList = JSON.parse(localStorage.getItem('highScores'))|| []
   scoresList.push(newGameScore);
-  scoresList.sort((a, b) => b.score - a.score).slice(0, 10);
+  scoresList = scoresList.sort((a, b) => b.score - a.score).slice(0, 10);
   localStorage.setItem('highScores', JSON.stringify(scoresList));
   printScores(scoresList)
 } 
@@ -171,13 +172,19 @@ function getScore() {
 
 function printScores(scoreArray) {
   const highScoresList = JSON.parse(localStorage.getItem('highScores')) || [];
-  let scoresHTML = '<h3>High Scores</h3><ul>';
+  let scoresHTML = '';
 
   highScoresList.forEach((score, index) => {
-    scoresHTML += `<li>${index + 1}. Score: ${score.score}, Percentage: ${score.perc}%, Date: ${score.date}</li>`;
+    scoresHTML += `
+      <li class="flex spacebetween high-score">
+        <p class="place">#${index + 1}</p>
+        <p class="number">${score.score} words</p>
+        <p class="percent">${score.percent}%</p>
+        <p class="when">${score.date}</p>
+      </li>
+    `;
   });
 
-  scoresHTML += '</ul>';
   scores.innerHTML = scoresHTML;
 }
 
@@ -192,4 +199,4 @@ utils.listen('input', userInput, checkWord);
 utils.listen('click', highScores, openScores);
 utils.listen('click', close, closeScores);
 utils.listen('click', game, closeScores);
-
+utils.listen('load', window, printScores)
