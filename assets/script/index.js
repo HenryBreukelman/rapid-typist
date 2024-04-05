@@ -1,7 +1,6 @@
 'use strict';
 
 import * as utils from './utils.js';
-import {Score} from './Score.js';
 
 let words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building', 
 'population', 'weather', 'bottle', 'history', 'dream', 'character', 'money', 
@@ -39,7 +38,7 @@ let gameRunning = false;
 let setTime;
 let newList;
 let gameScore = 0;
-let scoresList;
+let scoresList = [];
 
 const gameMusic = new Audio('./assets/media/music.mp3');
 gameMusic.type = "audio/mp3";
@@ -153,12 +152,10 @@ function closeScores() {
 function setHighScores() {
   let newGameScore = getScore()
   let scoresList = JSON.parse(localStorage.getItem('highScores'))|| []
-  console.log(scoresList, 1)
   scoresList.push(newGameScore);
-  console.log(scoresList, 2)
-  scoresList.sort((a, b) => b.score - a.score).splice(0, 10);
+  scoresList.sort((a, b) => b.score - a.score).slice(0, 10);
   localStorage.setItem('highScores', JSON.stringify(scoresList));
-  console.log(localStorage, 3)
+  printScores(scoresList)
 } 
 
 function getScore() {
@@ -166,11 +163,22 @@ function getScore() {
   let scoreDate = getDate();
   const newScore = {
     score: gameScore,
-    perc: gamePercent,
+    percent: gamePercent,
     date: scoreDate
   }
-  console.log(newScore, 4)
   return newScore
+}
+
+function printScores(scoreArray) {
+  const highScoresList = JSON.parse(localStorage.getItem('highScores')) || [];
+  let scoresHTML = '<h3>High Scores</h3><ul>';
+
+  highScoresList.forEach((score, index) => {
+    scoresHTML += `<li>${index + 1}. Score: ${score.score}, Percentage: ${score.perc}%, Date: ${score.date}</li>`;
+  });
+
+  scoresHTML += '</ul>';
+  scores.innerHTML = scoresHTML;
 }
 
 /*
