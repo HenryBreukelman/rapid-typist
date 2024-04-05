@@ -29,6 +29,7 @@ const timer = utils.select('.timer');
 const word = utils.select('.word');
 const score = utils.select('.score');
 const userInput = utils.select('.user-input');
+const highscores = utils.select('.score-button')
 
 let gameRunning = false;
 let setTime;
@@ -57,6 +58,8 @@ function setDate () {
   date.innerText = currentDate;
 }
 
+//game
+
 function startGame () {
   gameRunning = true;
   start.classList.add('hidden');
@@ -71,7 +74,7 @@ function startGame () {
 }
 
 function startTimer() {
-  let startTime = 99;
+  let startTime = 19;
   let timeLeft = startTime;
   setTime = setInterval(function() {
     timer.innerText = timeLeft;
@@ -125,6 +128,12 @@ function stopMusic () {
   gameMusic.currentTime = 0;
 }
 
+//scores
+
+function openscores() {
+  console.log(3)
+}
+ 
 /*
   eventlisteners
 */
@@ -133,4 +142,4 @@ utils.listen('load', window, setDate);
 utils.listen('click', start, startGame);
 utils.listen('click', reset, restartGame);
 utils.listen('input', userInput, checkWord);
-
+utils.listen('click', highscores, openscores)

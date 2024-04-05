@@ -23,25 +23,30 @@
   <body>
     <header class="flex spacebetween container">
       <p class="date header">date</p>
-      <h1>Rapid Typist</h1>
-      <div class="header"></div>
+      <h1 class="header center">Rapid Typist</h1>
+      <div class="header center">
+        <input type="button" class="score-button" value="Highscores">
+      </div>
     </header>
-    <main class="center container">
-      <form class="center">
-        <div class="start-box">
-          <input type="button" class="start-button" value="Start">
-          <input type="button" class="reset-button hidden" value="Reset">
-        </div>
-        <div class="timer-div flex">
-          <div class="center">
-            <i class="fa-regular fa-clock"></i>
+    <main>
+      <div class="center container game">
+        <form class="center">
+          <div class="start-box">
+            <input type="button" class="start-button" value="Start">
+            <input type="button" class="reset-button hidden" value="Reset">
           </div>
-          <p class="timer">99</p>
-        </div>
-        <p class="word center"></p>
-        <p class="score-box">Score: <span class="score">0</span></p>
-        <input type="text" class="user-input" disabled>
-      </form>
+          <div class="timer-div flex">
+            <div class="center">
+              <i class="fa-regular fa-clock"></i>
+            </div>
+            <p class="timer">99</p>
+          </div>
+          <p class="word center"></p>
+          <p class="score-box">Score: <span class="score">0</span></p>
+          <input type="text" class="user-input" disabled>
+        </form>
+      </div>
+      
     </main>
   </body>
 </html>
