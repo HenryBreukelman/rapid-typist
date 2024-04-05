@@ -33,6 +33,10 @@ body {
   display: none;
 }
 
+main {
+  position: relative;
+}
+
 /*
   Content
 */
@@ -63,6 +67,8 @@ h1 {
 }
 
 /* body */
+
+/* game */
 
 .game {
   height: calc(100vh - 100px);
@@ -153,4 +159,19 @@ i {
   height: 60px;
   transition: all 0.25s ease-in-out;
   
+}
+
+/* scores */
+
+.high-score-box {
+  z-index: 9;
+  position: absolute;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  border-top-left-radius: 20px;
+  border-top: 1px solid #9afffd;
+  border-left: 1px solid #9afffd;
+  background-color: rgba(40 4 70 / 0.3);
+  backdrop-filter: blur(4px);
 }
