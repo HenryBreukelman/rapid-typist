@@ -152,7 +152,8 @@ function closeScores() {
 
 function setHighScores() {
   let newGameScore = getScore()
-  let scoresList = JSON.parse(localStorage.getItem('highScores'))|| []
+  let scoresData = localStorage.getItem('highScores');
+  let scoresList = scoresData ? JSON.parse(scoresData) : [];
   scoresList.push(newGameScore);
   scoresList = scoresList.sort((a, b) => b.score - a.score).slice(0, 10);
   localStorage.setItem('highScores', JSON.stringify(scoresList));
@@ -170,8 +171,9 @@ function getScore() {
   return newScore
 }
 
-function printScores(scoreArray) {
-  const highScoresList = JSON.parse(localStorage.getItem('highScores')) || [];
+function printScores() {
+  let highScoresData = localStorage.getItem('highScores');
+  let highScoresList = highScoresData ? JSON.parse(highScoresData) : [];
   let scoresHTML = '';
 
   highScoresList.forEach((score, index) => {
@@ -188,7 +190,7 @@ function printScores(scoreArray) {
   scores.innerHTML = scoresHTML;
 
   if (highScoresList.length === 0) {
-    scores.innerHTML = `<p>No scores yet</p>`;
+    scores.innerHTML = `<p class="high-score">No scores yet</p>`;
   }
 }
 
