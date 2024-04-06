@@ -39,7 +39,7 @@ let setTime;
 let newList;
 let gameScore = 0;
 let scoresList = [];
-let gameTime = 10
+let gameTime = 10 // change back to 99
 
 const gameMusic = new Audio('./assets/media/music.mp3');
 gameMusic.type = "audio/mp3";
@@ -186,6 +186,10 @@ function printScores(scoreArray) {
   });
 
   scores.innerHTML = scoresHTML;
+
+  if (highScoresList.length === 0) {
+    scores.innerHTML = `<p>No scores yet</p>`;
+  }
 }
 
 /*
