@@ -39,7 +39,7 @@ let setTime;
 let newList;
 let gameScore = 0;
 let scoresList = [];
-let gameTime = 10 // change back to 99
+let gameTime = 10; // change back to 99
 
 const gameMusic = new Audio('./assets/media/music.mp3');
 gameMusic.type = "audio/mp3";
@@ -60,11 +60,11 @@ function getDate() {
   };
 
   let currentDate = new Date().toLocaleDateString('en-CA', options);
-  return currentDate
+  return currentDate;
 }
 
 function setDate() {
-  let currentDate = getDate()
+  let currentDate = getDate();
   date.innerText = currentDate;
 }
 
@@ -129,7 +129,7 @@ function resetGame() {
   timer.innerText = gameTime;
   userInput.disabled = true;
   userInput.value = '';
-  word.innerText = ''
+  word.innerText = '';
   setHighScores();
   gameScore = 0;
   stopMusic();
@@ -157,7 +157,7 @@ function setHighScores() {
   scoresList.push(newGameScore);
   scoresList = scoresList.sort((a, b) => b.score - a.score).slice(0, 10);
   localStorage.setItem('highScores', JSON.stringify(scoresList));
-  printScores(scoresList)
+  printScores(scoresList);
 } 
 
 function getScore() {
@@ -168,7 +168,7 @@ function getScore() {
     percent: gamePercent,
     date: scoreDate
   }
-  return newScore
+  return newScore;
 }
 
 function printScores() {
@@ -205,4 +205,4 @@ utils.listen('input', userInput, checkWord);
 utils.listen('click', highScores, openScores);
 utils.listen('click', close, closeScores);
 utils.listen('click', game, closeScores);
-utils.listen('load', window, printScores)
+utils.listen('load', window, printScores);
